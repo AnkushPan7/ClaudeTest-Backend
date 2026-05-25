@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClaudeCertPractice.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b9efb726a956e94898bd5d025145bf29b8c655d")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClaudeCertPractice.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClaudeCertPractice.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

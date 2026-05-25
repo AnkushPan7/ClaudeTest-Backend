@@ -4,6 +4,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>ClaudeCertPractice.Api</RootNamespace>
+    <!-- Out-of-process is more reliable when in-process ANCM/hosting bundle misbehaves -->
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="ClaudeCertPractice.Api\**" />
@@ -14,6 +16,9 @@
     </Content>
     <Content Update="Data\exam-guide.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="web.config">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
 </Project>
