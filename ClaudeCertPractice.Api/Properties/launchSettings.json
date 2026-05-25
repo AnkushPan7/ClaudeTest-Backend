@@ -6,7 +6,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5299"
+      "applicationUrl": "https://claudetest-backend.onrender.com/"
     },
     "IIS Express": {
       "commandName": "IISExpress",
