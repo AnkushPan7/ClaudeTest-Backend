@@ -3,6 +3,9 @@ using ClaudeCertPractice.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+EnvFileLoader.LoadFromContentRoot(Directory.GetCurrentDirectory());
+EnvFileLoader.LoadFromContentRoot(builder.Environment.ContentRootPath);
+
 builder.Configuration.AddJsonFile(
     $"appsettings.{builder.Environment.EnvironmentName}.local.json",
     optional: true,

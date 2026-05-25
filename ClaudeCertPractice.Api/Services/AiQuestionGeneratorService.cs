@@ -32,7 +32,7 @@ public class AiQuestionGeneratorService
     }
 
     public bool IsConfigured =>
-        !string.IsNullOrWhiteSpace(GetApiKey());
+        AnthropicApiKeyResolver.IsConfigured(_config);
 
     public async Task<List<Question>> GenerateAsync(
         int count,
@@ -43,7 +43,7 @@ public class AiQuestionGeneratorService
         var apiKey = GetApiKey();
         if (string.IsNullOrWhiteSpace(apiKey))
             throw new InvalidOperationException(
-                "AI question generation requires ANTHROPIC_API_KEY (environment variable) or Quiz:AnthropicApiKey in configuration.");
+                "AI question generation requires ANTHROPIC_API_KEY or AnthropicApiKey in environment (or .env), or Quiz:AnthropicApiKey in configuration.");
 
         var sourceText = await _content.FetchTextAsync(learningUrl, ct);
         var sectionHint = _examGuide.BuildAiDomainHint(sectionIds);
@@ -172,9 +172,7 @@ public class AiQuestionGeneratorService
             Explanation: q.Explanation ?? "")).ToList();
     }
 
-    private string? GetApiKey() =>
-        Environment.GetEnvironmentVariable("ANTHROPIC_API_KEY")
-        ?? _config["Quiz:AnthropicApiKey"];
+    private string? GetApiKey() => AnthropicApiKeyResolver.Resolve(_config);
 
     private static Dictionary<string, string> NormalizeOptions(Dictionary<string, string>? options)
     {

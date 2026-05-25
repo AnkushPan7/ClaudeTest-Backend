@@ -53,7 +53,7 @@ public class QuizController : ControllerBase
         var useAi = source.Equals("Ai", StringComparison.OrdinalIgnoreCase);
 
         if (useAi && !_ai.IsConfigured)
-            return BadRequest("AI mode requires ANTHROPIC_API_KEY or Quiz:AnthropicApiKey.");
+            return BadRequest("AI mode requires ANTHROPIC_API_KEY or AnthropicApiKey in environment (or .env), or Quiz:AnthropicApiKey.");
 
         List<Question> questions;
 
