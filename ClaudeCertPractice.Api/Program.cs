@@ -45,5 +45,16 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseCors();
+
+app.MapGet("/", () => Results.Ok(new
+{
+    status = "ok",
+    service = "ClaudeCertPractice.Api",
+    health = "/health",
+    api = "/api/quiz/metadata"
+}));
+
+app.MapGet("/health", () => Results.Ok(new { status = "healthy" }));
+
 app.MapControllers();
 app.Run();
