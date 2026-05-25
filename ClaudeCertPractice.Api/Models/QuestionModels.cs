@@ -89,7 +89,8 @@ public record QuestionReviewItem(
     string Title,
     string Text,
     Dictionary<string, string> Options,
-    string SelectedAnswer,
+    string? SelectedAnswer,
     string CorrectAnswer,
     bool IsCorrect,
-    string Explanation);
+    string Explanation,
+    bool Answered);

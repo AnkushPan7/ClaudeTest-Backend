@@ -154,12 +154,25 @@ public class QuizController : ControllerBase
         for (var i = 0; i < session.Questions.Count; i++)
         {
             var q = session.Questions[i];
-            if (!session.Answers.TryGetValue(i, out var answer))
-                continue;
-
             var sectionName = session.SourceMode == "Ai"
                 ? _examGuide.GetDomainName(q.SectionId)
                 : _bank.GetDomainNameForQuestion(q);
+
+            if (!session.Answers.TryGetValue(i, out var answer))
+            {
+                items.Add(new QuestionReviewItem(
+                    i,
+                    sectionName,
+                    q.Title,
+                    q.Text,
+                    q.Options,
+                    null,
+                    q.CorrectAnswer,
+                    false,
+                    q.Explanation,
+                    false));
+                continue;
+            }
 
             items.Add(new QuestionReviewItem(
                 i,
@@ -170,7 +183,8 @@ public class QuizController : ControllerBase
                 answer.Selected,
                 q.CorrectAnswer,
                 answer.IsCorrect,
-                q.Explanation));
+                q.Explanation,
+                true));
         }
 
         return Ok(new SessionReviewDto(sessionId, items));

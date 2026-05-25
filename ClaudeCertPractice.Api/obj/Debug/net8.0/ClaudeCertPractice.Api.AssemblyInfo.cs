@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClaudeCertPractice.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cfd5b1e67a2174a546d01f096dc1196e53a3757d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b3c9eb7dd0d371ca5052dc0ba9bdbb22b0aba2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClaudeCertPractice.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClaudeCertPractice.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
