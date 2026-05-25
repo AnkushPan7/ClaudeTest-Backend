@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "bdMzBWaKTAA=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\admin\\.cursor\\projects\\empty-window\\claude-cert-practice\\backend\\ClaudeCertPractice.Api\\ClaudeCertPractice.Api\\ClaudeCertPractice.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
