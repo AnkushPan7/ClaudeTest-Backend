@@ -3,6 +3,11 @@ using ClaudeCertPractice.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Render (and similar hosts) inject PORT; bind Kestrel explicitly.
+var port = Environment.GetEnvironmentVariable("PORT");
+if (!string.IsNullOrWhiteSpace(port))
+    builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
 EnvFileLoader.LoadFromContentRoot(Directory.GetCurrentDirectory());
 EnvFileLoader.LoadFromContentRoot(builder.Environment.ContentRootPath);
 
@@ -18,14 +23,21 @@ builder.Services.AddSingleton<QuestionBankService>();
 builder.Services.AddSingleton<QuizSessionService>();
 builder.Services.AddHttpClient<LearningContentService>();
 builder.Services.AddHttpClient<AiQuestionGeneratorService>();
+var corsOrigins = builder.Configuration["CORS_ALLOWED_ORIGINS"];
+var allowedOrigins = string.IsNullOrWhiteSpace(corsOrigins)
+    ? new[]
+    {
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174"
+    }
+    : corsOrigins.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
-        policy.WithOrigins(
-                "http://localhost:5173",
-                "http://127.0.0.1:5173",
-                "http://localhost:5174",
-                "http://127.0.0.1:5174")
+        policy.WithOrigins(allowedOrigins)
               .AllowAnyHeader()
               .AllowAnyMethod());
 });
